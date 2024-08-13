@@ -1,0 +1,156 @@
+<div class="space-y-12">
+  <div class="border-b border-gray-900/10 pb-12">
+    <h2 class="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
+    <p class="mt-1 text-sm leading-6 text-gray-600">Manage your personal details.</p>
+
+    <%= if @edit_mode do %>
+      <.form for={@form} phx-submit="save">
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div class="sm:col-span-3">
+            <label for="name" class="block text-sm font-medium leading-6 text-gray-900">
+              Full Name
+            </label>
+            <div class="mt-2">
+              <.input field={@form[:name]} placeholder="John Doe" autocomplete="off" type="text" />
+            </div>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label for="age" class="block text-sm font-medium leading-6 text-gray-900">Age</label>
+            <div class="mt-2">
+              <.input field={@form[:age]} placeholder="34" autocomplete="off" type="number" />
+            </div>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label for="job_title" class="block text-sm font-medium leading-6 text-gray-900">
+              Job Title
+            </label>
+            <div class="mt-2">
+              <.input field={@form[:job_title]} placeholder="Data Scientist" autocomplete="off" type="text" />
+            </div>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label for="country" class="block text-sm font-medium leading-6 text-gray-900">
+              Country
+            </label>
+            <div class="mt-2">
+              <.input field={@form[:country]} type="select" options={["Canada", "United States" ]} />
+            </div>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label for="city" class="block text-sm font-medium leading-6 text-gray-900">
+              City
+            </label>
+            <div class="mt-2">
+              <.input field={@form[:city]} placeholder="Montreal" autocomplete="off" type="text" />
+            </div>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label for="state" class="block text-sm font-medium leading-6 text-gray-900">
+              State / Province
+            </label>
+            <div class="mt-2">
+              <.input field={@form[:state]} placeholder="Quebec" autocomplete="off" type="text" />
+            </div>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label for="marital_status" class="block text-sm font-medium leading-6 text-gray-900">
+              Marital Status
+            </label>
+            <div class="mt-2">
+              <.input class="form-select" field={@form[:marital_status]} type="select" autocomplete="off"
+                options={["Single", "Married" , "Widowed" , "Divorced" ]} />
+            </div>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label for="dependant_amount" class="block text-sm font-medium leading-6 text-gray-900">
+              Number of dependants
+            </label>
+            <div class="mt-2">
+              <.input field={@form[:dependant_amount]} placeholder="2" autocomplete="off" type="number" />
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 flex items-center justify-end gap-x-6">
+          <button type="button" phx-click="cancel" class="text-sm font-semibold leading-6 text-gray-900">
+            Cancel
+          </button>
+          <.button type="submit">Save</.button>
+        </div>
+      </.form>
+      <% else %>
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div class="sm:col-span-3">
+            <label class="block text-sm font-medium leading-6 text-gray-900">Full Name</label>
+            <p class="mt-1 text-sm text-gray-500">
+              <%= @personal_info.name %>
+            </p>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label class="block text-sm font-medium leading-6 text-gray-900">Age</label>
+            <p class="mt-1 text-sm text-gray-500">
+              <%= @personal_info.age %>
+            </p>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label class="block text-sm font-medium leading-6 text-gray-900">Job Title</label>
+            <p class="mt-1 text-sm text-gray-500">
+              <%= @personal_info.job_title %>
+            </p>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label class="block text-sm font-medium leading-6 text-gray-900">Country</label>
+            <p class="mt-1 text-sm text-gray-500">
+              <%= @personal_info.country %>
+            </p>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label class="block text-sm font-medium leading-6 text-gray-900">City</label>
+            <p class="mt-1 text-sm text-gray-500">
+              <%= @personal_info.city %>
+            </p>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label class="block text-sm font-medium leading-6 text-gray-900">
+              State / Province
+            </label>
+            <p class="mt-1 text-sm text-gray-500">
+              <%= @personal_info.state %>
+            </p>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label class="block text-sm font-medium leading-6 text-gray-900">Marital Status</label>
+            <p class="mt-1 text-sm text-gray-500">
+              <%= @personal_info.marital_status %>
+            </p>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label class="block text-sm font-medium leading-6 text-gray-900">
+              Number of dependants
+            </label>
+            <p class="mt-1 text-sm text-gray-500">
+              <%= @personal_info.dependant_amount %>
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-6 flex items-center justify-end gap-x-6">
+          <.button phx-click="edit">Edit Information</.button>
+        </div>
+        <% end %>
+  </div>
+</div>
