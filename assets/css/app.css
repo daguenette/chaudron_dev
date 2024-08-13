@@ -3,6 +3,7 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+
 form input[type="text"] {
   @apply 
     block
@@ -62,11 +63,11 @@ form input[type="select"] {
 .custom-hover {
   text-decoration: none;
   transition: all 0.2s ease-in-out;
+  padding: 5px 10px;
 }
 
 .custom-hover:hover {
   background-color: black;
   color: white;
-  padding: 5px 10px;
   border-radius: 4px;
 }

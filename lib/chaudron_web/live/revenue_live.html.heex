@@ -1,0 +1,132 @@
+<div class="space-y-12">
+  <div class="border-b border-gray-900/10 pb-12 mb-8">
+    <h2 class="text-base font-semibold leading-7 text-gray-900">Revenues</h2>
+    <p class="mt-1 text-sm leading-6 text-gray-600">Manage your revenue information.</p>
+
+    <%= if @edit_mode do %>
+      <.form for={@form} phx-submit="save-revenue" phx-target={@myself}>
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div class="sm:col-span-3">
+            <label for="annual_gross_salary" class="block text-sm font-medium leading-6 text-gray-900">
+              Annual Gross Salary
+            </label>
+            <div class="mt-2">
+              <.input field={@form[:annual_gross_salary]} type="text" id="financialInput" phx-hook="FinancialInput"
+                placeholder="Enter amount" />
+            </div>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label for="additional_income_sources" class="block text-sm font-medium leading-6 text-gray-900">
+              Additional Income Sources
+            </label>
+            <div class="mt-2">
+              <.input field={@form[:additional_income_sources]} type="text" id="financialInput"
+                phx-hook="FinancialInput" placeholder="Enter amount" />
+            </div>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label for="alimony_received" class="block text-sm font-medium leading-6 text-gray-900">
+              Alimony Received
+            </label>
+            <div class="mt-2">
+              <.input field={@form[:alimony_received]} type="text" id="financialInput" phx-hook="FinancialInput"
+                placeholder="Enter amount" />
+            </div>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label for="social_benefits" class="block text-sm font-medium leading-6 text-gray-900">
+              Social Benefits
+            </label>
+            <div class="mt-2">
+              <.input field={@form[:social_benefits]} type="text" id="financialInput" phx-hook="FinancialInput"
+                placeholder="Enter amount" />
+            </div>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label for="investment_income" class="block text-sm font-medium leading-6 text-gray-900">
+              Investment Income
+            </label>
+            <div class="mt-2">
+              <.input field={@form[:investment_income]} type="text" id="financialInput" phx-hook="FinancialInput"
+                placeholder="Enter amount" />
+            </div>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label for="other_income" class="block text-sm font-medium leading-6 text-gray-900">
+              Other Income
+            </label>
+            <div class="mt-2">
+              <.input field={@form[:other_income]} type="text" id="financialInput" phx-hook="FinancialInput"
+                placeholder="Enter amount" />
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 flex items-center justify-end gap-x-6">
+          <.button type="submit">Save</.button>
+        </div>
+      </.form>
+      <% else %>
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div class="sm:col-span-3">
+            <label class="block text-sm font-medium leading-6 text-gray-900">
+              Annual Gross Salary
+            </label>
+            <p class="mt-1 text-sm text-gray-500">
+              <%= Number.Currency.number_to_currency(@revenue.annual_gross_salary || 0, precision: 2 ) %>
+            </p>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label class="block text-sm font-medium leading-6 text-gray-900">
+              Additional Income Sources
+            </label>
+            <p class="mt-1 text-sm text-gray-500">
+              <%= Number.Currency.number_to_currency(@revenue.additional_income_sources || 0, precision: 2 ) %>
+            </p>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label class="block text-sm font-medium leading-6 text-gray-900">
+              Alimony Received
+            </label>
+            <p class="mt-1 text-sm text-gray-500">
+              <%= Number.Currency.number_to_currency(@revenue.alimony_received || 0, precision: 2) %>
+            </p>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label class="block text-sm font-medium leading-6 text-gray-900">
+              Social Benefits
+            </label>
+            <p class="mt-1 text-sm text-gray-500">
+              <%= Number.Currency.number_to_currency(@revenue.social_benefits || 0, precision: 2) %>
+            </p>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label class="block text-sm font-medium leading-6 text-gray-900">
+              Investment Income
+            </label>
+            <p class="mt-1 text-sm text-gray-500">
+              <%= Number.Currency.number_to_currency(@revenue.investment_income || 0, precision: 2) %>
+            </p>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label class="block text-sm font-medium leading-6 text-gray-900">
+              Other Income
+            </label>
+            <p class="mt-1 text-sm text-gray-500">
+              <%= Number.Currency.number_to_currency(@revenue.other_income || 0, precision: 2) %>
+            </p>
+          </div>
+        </div>
+        <% end %>
+  </div>
+</div>

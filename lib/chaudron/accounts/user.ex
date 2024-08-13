@@ -10,6 +10,7 @@ defmodule Chaudron.Accounts.User do
     field :current_password, :string, virtual: true, redact: true
     field :confirmed_at, :utc_datetime
     has_one :personal_informations, Chaudron.PersonalInformations.PersonalInformation
+    has_one :revenues, Chaudron.Revenues.Revenue
 
     timestamps(type: :utc_datetime)
   end
