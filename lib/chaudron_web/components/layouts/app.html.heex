@@ -13,6 +13,24 @@
         <a href="/contact" class="custom-hover">
           Contact
         </a>
+        <div class="relative" x-data="{ open: false }">
+          <button @click="open = !open" class="custom-hover flex items-center">
+            Calculators
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+              </path>
+            </svg>
+          </button>
+          <div x-show="open" @click.away="open = false" x-cloak
+            class="absolute bg-white border border-gray-200 mt-2 py-2 w-48 rounded-lg shadow-lg">
+            <a href="/calculators/mortage" class="block px-4 py-2 hover:bg-gray-100">Mortage</a>
+            <a href="/calculators/rrsp" class="block px-4 py-2 hover:bg-gray-100">RRSP</a>
+            <a href="/products/compound-interest" class="block px-4 py-2 hover:bg-gray-100">
+              Compound Interest
+            </a>
+          </div>
+        </div>
         <a href="/profile/" class="custom-hover">
           Profile
         </a>
@@ -24,8 +42,8 @@
     </div>
   </nav>
 </header>
-<main class="px-4 py-20 sm:px-6 lg:px-8">
-  <div class="mx-auto max-w-2xl">
+<main>
+  <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
     <.flash_group flash={@flash} />
     <%= @inner_content %>
   </div>

@@ -22,6 +22,7 @@ defmodule ChaudronWeb.Router do
 
     get "/", PageController, :home
     get "/about", AboutController, :about
+    get "/calculators/mortage", MortageController, :mortage
   end
 
   # Other scopes may use custom stacks.

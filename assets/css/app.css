@@ -3,6 +3,7 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+[x-cloak] { display: none !important; }
 
 form input[type="text"] {
   @apply 
